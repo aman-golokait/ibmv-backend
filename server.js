@@ -9,7 +9,7 @@ app.use(express.json());
 
 require("dotenv").config();
 
-app.use("/api/token", async (req, res) => {
+app.post("/api/token", async (req, res) => {
   try {
     const { name, contact_number, email } = req.body;
 
