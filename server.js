@@ -27,6 +27,7 @@ app.post("/api/token", async (req, res) => {
       iat: now,
       exp: now + 120,
       first_name: name,
+      last_name:"",
       email: email,
       contact_number: contact_number,
     };
