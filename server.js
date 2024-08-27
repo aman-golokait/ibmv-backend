@@ -12,7 +12,12 @@ require("dotenv").config();
 app.post("/api/token", async (req, res) => {
   try {
     const { name, contact_number, email } = req.body;
-
+    if( !name || !email){
+        return res.status(400).json({
+            success:false,
+            message: "user details required"
+        })
+    }
     const SECRET_KEY = process.env.JWT_SECRET;
 
     const now = Math.floor(Date.now() / 1000);
