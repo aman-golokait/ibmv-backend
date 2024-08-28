@@ -1,7 +1,7 @@
 const express = require("express");
 
 const app = express();
-const jwt  =require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
 app.use(cors());
@@ -12,11 +12,11 @@ require("dotenv").config();
 app.post("/api/token", async (req, res) => {
   try {
     const { name, contact_number, email } = req.body;
-    if( !name || !email){
-        return res.status(400).json({
-            success:false,
-            message: "user details required"
-        })
+    if (!name || !email) {
+      return res.status(400).json({
+        success: false,
+        message: "user details required",
+      });
     }
     const SECRET_KEY = process.env.JWT_SECRET;
 
@@ -27,7 +27,7 @@ app.post("/api/token", async (req, res) => {
       iat: now,
       exp: now + 120,
       first_name: name,
-      last_name:"",
+      last_name: name,
       email: email,
       contact_number: contact_number,
     };
