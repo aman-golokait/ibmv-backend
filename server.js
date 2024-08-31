@@ -11,8 +11,9 @@ require("dotenv").config();
 
 app.post("/api/token", async (req, res) => {
   try {
-    const { name, contact_number, email } = req.body;
-    if (!name || !email) {
+
+    const { firstName, lastName, contact_number, email } = req.body;
+    if (!firstName || !email) {
       return res.status(400).json({
         success: false,
         message: "user details required",
@@ -26,8 +27,8 @@ app.post("/api/token", async (req, res) => {
       iss: "Online JWT Builder",
       iat: now,
       exp: now + 120,
-      first_name: name,
-      last_name: name,
+      first_name: firstName,
+      last_name: lastName,
       email: email,
       contact_number: contact_number,
     };
